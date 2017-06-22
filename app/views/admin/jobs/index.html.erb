@@ -1,0 +1,36 @@
+<div class="col-md-12">
+  <%= link_to("新增工作", new_admin_job_path, class: "btn btn-primary pull-right") %>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>职位名称</td>
+        <td>职位描述</td>
+        <td>上传时间</td>
+        <td>状态</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td>#</td>
+          <td><%= link_to(job.title, job_path(job)) %></td>
+          <td><%= job.description %></td>
+          <td><%= job.created_at %></td>
+          <td>
+            <%= render_job_status(job) %>
+            <% if job.is_hidden %>
+              <%= link_to("public", public_admin_job_path(job), method: :post) %>
+            <% else %>
+              <%= link_to("hide", hide_admin_job_path(job), method: :post) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to("编辑", edit_admin_job_path(job), class: "btn btn-sm btn-default") %>
+            <%= link_to("删除", admin_job_path(job), class: "btn btn-sm btn-default", method: :delete, data: { confirm: "Are you sure?"}) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
