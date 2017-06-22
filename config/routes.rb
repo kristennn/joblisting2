@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root "welcome#index"
+  root "jobs#index"
+  resources :jobs
 end

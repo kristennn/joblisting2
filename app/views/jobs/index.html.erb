@@ -1,0 +1,22 @@
+<div class="col-md-12">
+  <table class="table">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>职位名称</td>
+        <td>职位描述</td>
+        <td>上传时间</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td>#</td>
+          <td><%= link_to(job.title, job_path(job)) %></td>
+          <td><%= job.description %></td>
+          <td><%= job.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
