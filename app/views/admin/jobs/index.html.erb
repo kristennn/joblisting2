@@ -7,6 +7,7 @@
         <td>职位名称</td>
         <td>职位描述</td>
         <td>上传时间</td>
+        <td>简历</td>
         <td>状态</td>
       </tr>
     </thead>
@@ -17,6 +18,7 @@
           <td><%= link_to(job.title, job_path(job)) %></td>
           <td><%= job.description %></td>
           <td><%= job.created_at %></td>
+          <td><%= link_to(job.resumes.count, admin_job_resumes_path(job)) %></td>
           <td>
             <%= render_job_status(job) %>
             <% if job.is_hidden %>
